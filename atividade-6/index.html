@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <link rel="stylesheet" type="text/css" href="./style/slider.css">
+    <title>TT905 - Atividade 6</title>
+</head>
+
+<body>
+
+    <div class="caixa">
+        <header class="header-menu">
+            <a class="atividade-anterior" href="../atividade-4-5/index.html">Atividade anterior</a>
+            <a class="ft-logo rotaciona" href="https://www.ft.unicamp.br/pt-br/graduacao/cursos/et" target="_blank">
+                <img height="100%" src="https://www.ft.unicamp.br/sites/default/files/logoHome.png">
+            </a>
+            <h1 class="titulo">TT905 - Atividade 6</h1>
+            <nav>
+                <a href="./integrantes/maria-isabela.html">Integrante 1</a>
+                <a href="./integrantes/sem-integrante.html">Integrante 2</a>
+            </nav>
+        </header>
+
+        <section class="conteudo">
+            <article>
+                <h3>Atividade 6</h3>
+                <span class="data">Entrega: 17/05/2021</span>
+                <p>Nesta atividade, você deverá demonstrar os seus conhecimentos de JavaScript. Em especial, o professor deseja saber se:</p>
+                <ol>
+                    <li>Você consegue capturar um evento.</li>
+                    <li>Você consegue modificar a interface do HTML.</li>
+                    <li>Você consegue adicionar imagens na tela usando JavaScript.</li>
+                </ol>
+                <p>Para resolver a essa atividade, é proposto que vocês façam uma coletânea de algumas de suas próprias fotos para compor um álbum. No caso de trabalhos feitos em dupla, é requerido que sejam feitos dois álbuns. Cada foto deve vir acompanhada de uma descrição. Você poderá criar as fotos nos seguintes esquemas vistos durante a aula:</p>
+                <p>1 - As fotos aparecem na página em formato diminuído (como um Thumbnail) e, quando a pessoa passar o mouse na foto, as mesmas aparecem grande no centro da tela com uma descrição do que aquela foto representa em algum lugar.</p>
+                <p>2 - As fotos não aparecem na página, mas dois botões (anterior e próximo) permitem que o usuário navegue pelo álbum, onde em algum lugar aparecerá a foto e a descrição dessa foto.</p>
+
+                <p>Você também pode inventar um esquema próprio de mostrar as fotos se assim decidir. A única coisa que realmente importa é saber que você consegue modificar a tela reagindo a algum evento, mostrando tanto imagens quanto texto.</p>
+                <p>O formato de entrega desta atividade será um vídeo em que você mostra o seu álbum (e o da sua dupla, se for o caso). Note que este álbum deve estar no mesmo site dos seus trabalhos anteriores.</p>
+            </article>
+
+            <div id="slider" data-images='[
+                ["img/img-01.jpg", "🦠 (Pandemia)", "A primeira vez que tive que usar máscara para sair de casa #fiqueemcasa"],
+                ["img/img-02.jpg", "🤡 (Alegria)", "Eu sou voluntária na ong anjos da alegria, visitamos asilos e hospitais (Doutora Pitica)"],
+                ["img/img-03.jpg", "🍣 (Sushi)", "Esse é o meu gato, sushi, ele tem heterocromia e o nome da minha comida preferida, lindo né? MIAU"],
+                ["img/img-04.jpg", "📡 (Telecomunicações)", "Essa foto foi no dia da incrição presencial da faculdade"],
+                ["img/img-05.jpg", "👧🏻 (Pequena eu)", "Essa sou eu pequena, acho que prevendo ao analisar esse Nokia tijolão que meu curso ir ser puxado kkk"]
+            ]'></div>
+        </section>
+
+        <aside>
+            <article class="commits">
+                <h2>Últimos Commits</h2>
+                <div id="commits"></div>
+            </article>
+
+            <article class="atividades">
+                <h2>Atividades Propostas</h2>
+                <div class="atividade bg-verde">
+                    Atividade 1<br>Entregue
+                </div>
+                <div class="atividade bg-verde">
+                    Atividade 2<br>Entregue
+                </div>
+                <div class="atividade bg-verde">
+                    Atividade 3<br>Entregue
+                </div>
+                <div class="atividade bg-verde">
+                    Atividade 4<br>Entregue
+                </div>
+                <div class="atividade bg-verde">
+                    Atividade 5<br>Entregue
+                </div>
+                <div class="atividade bg-laranja">
+                    Atividade 6<br>Entregando
+                </div>
+            </article>
+        </aside>
+
+        <div class="clearfix"></div>
+
+        <footer>
+            Desenvolvido por Maria Isabela - 221700
+            <a class="footer-link"
+                href="https://www.dac.unicamp.br/portal/caderno-de-horarios/2021/1/S/G/FT/TT905">Disciplina</a>
+            <a class="footer-link" href="https://www.ft.unicamp.br/pt-br/pessoas/docentes/ulisses">Professor</a>
+        </footer>
+
+    </div>
+
+</body>
+
+<script src="scripts/slider.js"></script>
+<script src="scripts/commits.js"></script>
+
+</html>
