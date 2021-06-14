@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <title>TT905 - Atividade 8</title>
+</head>
+
+<body>
+    <div class="caixa">
+        <header class="header-menu">
+            <a class="atividade-anterior" href="../atividade-6/index.html">Atividade anterior</a>
+            <a class="ft-logo rotaciona" href="https://www.ft.unicamp.br/pt-br/graduacao/cursos/et" target="_blank">
+                <img height="100%" src="https://www.ft.unicamp.br/sites/default/files/logoHome.png">
+            </a>
+            <h1 class="titulo">TT905 - Atividade 8</h1>
+            <nav>
+                <h2>Lista de Séries</h2>
+            </nav>
+        </header>
+
+        <section class="conteudo">
+            <div class="controls">
+                <a href="#" id="add-serie" class="btn"></a>
+                <a href="#" id="get-series" class="btn"></a>
+            </div>
+            <table id="filmes-series">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Gênero</th>
+                        <th>Duração</th>
+                        <th>Nota</th>
+                        <th>Sugestão</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td colspan="7">Carregando...</td>
+                </tbody>
+            </table>
+        </section>
+        
+        <footer>
+            Desenvolvido por Maria Isabela - 221700
+            <a class="footer-link"
+                href="https://www.dac.unicamp.br/portal/caderno-de-horarios/2021/1/S/G/FT/TT905">Disciplina</a>
+            <a class="footer-link" href="https://www.ft.unicamp.br/pt-br/pessoas/docentes/ulisses">Professor</a>
+        </footer>
+    </div>
+
+    <!-- Modal para adicionar uma série -->
+    <div class="modal" id="add-modal">
+        <div class="modal-inner">
+            <div class="modal-close"></div>
+            <div class="modal-title">Adicionar Série</div>
+            <div class="modal-body">
+                <form id="form-add">
+                    <input type="text" name="nome" placeholder="Nome">
+                    <input type="text" class="half" name="genero" placeholder="Gênero">
+                    <input type="text" class="half" name="duracao" placeholder="Duração">
+                    <input type="text" name="sinopse" placeholder="Sinopse">
+                    <input type="number" class="half" min="0" max="10" name="nota" placeholder="Nota">
+                    <input type="text" class="half" name="sugestao" placeholder="Sugestão">
+                    <button type="submit">Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para visualizar uma série -->
+    <div class="modal" id="view-modal">
+        <div class="modal-inner">
+            <div class="modal-close"></div>
+            <div class="modal-title">Visualizar Série</div>
+            <div class="modal-body">
+                <form id="form-add">
+                    <input type="number" name="id" placeholder="ID" disabled style="display: none;">
+                    <input type="text" name="nome" placeholder="Nome" disabled>
+                    <input type="text" class="half" name="genero" placeholder="Gênero" disabled>
+                    <input type="text" class="half" name="duracao" placeholder="Duração" disabled>
+                    <input type="text" name="sinopse" placeholder="Sinopse" disabled>
+                    <input type="text" class="half" min="0" max="10" name="nota" placeholder="Nota" disabled>
+                    <input type="text" class="half" name="sugestao" placeholder="Sugestão" disabled>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar uma série -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-inner">
+            <div class="modal-close"></div>
+            <div class="modal-title">Editar Série</div>
+            <div class="modal-body">
+                <form id="form-add">
+                    <input type="number" name="id" placeholder="ID" disabled style="display: none;">
+                    <input type="text" name="nome" placeholder="Nome">
+                    <input type="text" class="half" name="genero" placeholder="Gênero">
+                    <input type="text" class="half" name="duracao" placeholder="Duração">
+                    <input type="text" name="sinopse" placeholder="Sinopse">
+                    <input type="text" class="half" min="0" max="10" name="nota" placeholder="Nota">
+                    <input type="text" class="half" name="sugestao" placeholder="Sugestão">
+                    <button type="submit">Editar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="scripts/api.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/modal.js"></script>
+
+</html>
