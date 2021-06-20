@@ -5,6 +5,7 @@ const registerSeriesEvents = () => {
     for (let i = 0; i < viewSerieButtons.length; i++) {
         viewSerieButtons[i].onclick = function() {
             const serieId = this.id.split("-")[2]
+            console.log(serieId)
             updateModalValues("view-modal", serieId, true)
             openModal("view-modal")
         }
@@ -32,7 +33,8 @@ const registerSeriesEvents = () => {
 
 const updateModalValues = async (modal, serieId, placeholder = false) => {
     const serie = await getSerie(serieId)
-    document.querySelector(`#${modal} form input[name="id"]`).value = serieId
+    document.querySelector(`#${modal} form input[name="_id"]`).value = serieId
+    console.log(serie)
     for (let key in serie) {
         const el = document.querySelector(`#${modal} form input[name="${key}"]`);
         if (placeholder) {

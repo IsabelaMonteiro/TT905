@@ -13,8 +13,7 @@ const getSerie = async (id) => {
 }
 
 const addSerie = async (serie) => {
-    return await fetch(`${url}`,
-    {
+    return await fetch(`${url}`, {
         method: 'POST',
         body: JSON.stringify(serie),
         headers: {
@@ -26,8 +25,7 @@ const addSerie = async (serie) => {
 }
 
 const editSerie = async (serie) => {
-    return await fetch(`${url}/${serie.id}`,
-    {
+    return await fetch(`${url}/${serie._id}`, {
         method: 'PUT',
         body: JSON.stringify(serie),
         headers: {
@@ -39,8 +37,7 @@ const editSerie = async (serie) => {
 }
 
 const delSerie = async (id) => {
-    return await fetch(`${url}/${id}`,
-    {
+    return await fetch(`${url}/${id}`, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',
