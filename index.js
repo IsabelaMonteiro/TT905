@@ -1,4 +1,5 @@
 const express = require('express');
+const mongodb = require('mongodb')
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 80;
@@ -6,87 +7,75 @@ const port = process.env.PORT || 80;
 app.use(express.json());
 app.use(cors());
 
-const dados = [
-    {
-        nome:"Doctor Who",
-        genero:"Ficção Cientifica, Aventura, Fantasia",
-        duracao:"12 temporadas",
-        sinopse:"Um extraterrestre conhecido como doutor viaja pelo tempo e espaço em sua nave espacial chamada TARDIS para proteger a terra e todo universo",
-        nota:10,
-        sugestao:"Harry Potter e a Câmara Secreta"
-    },
-    {
-        nome:"Maravilhosa Senhora Maisel",
-        genero:"Comédia e Drama",
-        duracao:"26 episódios",
-        sinopse:"Uma dona de casa dos anos 50 é surpreendida por uma traição de seu marido e vÊ seu casamento desmoronar junto com uma vida perfeitamente planejada. Ela descobre no stand-up um novo talento e uma forma de superar e supreender a todos",
-        nota:10,
-        sugestao:"Coisa mais linda "
-    },
+const password = process.env.PASSWORD || "T88NleCcdVnSyPtx";
+console.log(password)
+const connectionString = `mongodb+srv://bela:${password}@series.h0fx4.mongodb.net/tt905-series?retryWrites=true&w=majority`;
+   
 
-    {
-        nome:"Atypical",
-        genero:"Comédia",
-        duracao:"26 episódios",
-        sinopse:"Sam é um jovem autista que busca independência e uma forma de adaptar sua condição e seu jeito sincero em um mundo onde ser uma pessoa normal não é tão óbvio assim",
-        nota:10,
-        sugestao:"The good doctor"
-    }
-];
+(async()=>{
+    /* Connects to MongoDB */
+    const client = await mongodb.MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+    const db = client.db('tt905-series');
+    const series = db.collection('series');
+   
+    app.get('/series', async (req, res) => {
+        const todas_series = await series.find({}).toArray()
+        res.send(todas_series);
+    })
 
-app.get('/series', (req, res) => {
-    res.send(dados);
-})
+    app.get('/series/:id', async (req, res) => {
+        const serie = await series.findOne({_id: mongodb.ObjectID(req.params.id)})
+        res.send(serie);
+    })
 
-app.get('/series/:id', (req, res) => {
-    const id = req.params.id;
-    res.send(dados[id]);
-})
+    app.post('/series', async (req, res) => {
+        if (req.body.nome == null) {
+            res.send({alerta:"Nome é um campo obrigatório"});
+            return;
+        }
 
-app.post('/series', (req, res) => {
-    const valores = req.body;
-    if (valores.nome == null) {
-        res.send({alerta:"Nome é um campo obrigatório"});
-        return;
-    }
+        series.insertOne({
+            nome: req.body.nome,
+            genero: req.body.genero,
+            duracao: req.body.duracao,
+            sinopse: req.body.sinopse,
+            nota: req.body.nota,
+            sugestao: req.body.sugestao
+        });
 
-    dados.push({
-        nome: valores.nome,
-        genero:valores.genero,
-        duracao:valores.duracao,
-        sinopse:valores.sinopse,
-        nota:valores.nota,
-        sugestao:valores.sugestao
-    });
-    res.send({alerta:"Registro Adicionado"});
-})
+        res.send({alerta:"Registro Adicionado"});
+    })
 
-app.put('/series/:id', (req, res) => {
-    const valores = req.body;
-    if (valores.nome == null) {
-        res.send({alerta:"Nome é um campo obrigatório"});
-        return;
-    }
+    app.put('/series/:id', async (req, res) => {
+        if (req.body.nome == null) {
+            res.send({alerta:"Nome é um campo obrigatório"});
+            return;
+        }
 
-    const id = req.params.id;
-    dados[id] = {
-        nome: valores.nome,
-        genero:valores.genero,
-        duracao:valores.duracao,
-        sinopse:valores.sinopse,
-        nota:valores.nota,
-        sugestao:valores.sugestao
-    };
-    res.send({alerta:"Registro Alterado"});
-})
+        await series.updateOne(
+            {_id : mongodb.ObjectID(req.params.id)},
+            {
+                $set : {
+                    nome: req.body.nome,
+                    genero: req.body.genero,
+                    duracao: req.body.duracao,
+                    sinopse: req.body.sinopse,
+                    nota: req.body.nota,
+                    sugestao: req.body.sugestao
+                }
+            }
+        );
 
-app.delete('/series/:id', (req, res) => {
-    const id = req.params.id;
-    dados.splice(id, 1);
-    res.send({alerta:"Registro Excluido"});
-})
+        res.send({alerta:"Registro Alterado"});
+    })
+
+    app.delete('/series/:id', async (req, res) => {
+        await series.deleteOne({_id : mongodb.ObjectID(req.params.id)});
+        res.send({alerta:"Registro Excluido"});
+    })
+
+})();
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`API em execução: http://localhost:${port}`);
 })
-
