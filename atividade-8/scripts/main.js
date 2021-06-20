@@ -49,16 +49,16 @@ const refreshTable = async () => {
     let rows = ""
     for (let i = 0; i < series.length; i++) {    
         rows += `<tr>
-                    <td> ${ i } </td>
+                    <td> ${ series[i]._id } </td>
                     <td> ${ series[i].nome } </td>
                     <td> ${ series[i].genero } </td>
                     <td> ${ series[i].duracao } </td>
                     <td> ${ series[i].nota } </td>
                     <td> ${ series[i].sugestao } </td>
                     <td>
-                        <button class="view-serie btn" id="view-serie-${i}"></button>
-                        <button class="edit-serie btn" id="edit-serie-${i}"></button>
-                        <button class="del-serie btn" id="del-serie-${i}"></button>
+                        <button class="view-serie btn" id="view-serie-${series[i]._id}"></button>
+                        <button class="edit-serie btn" id="edit-serie-${series[i]._id}"></button>
+                        <button class="del-serie btn" id="del-serie-${series[i]._id}"></button>
                     </td>
                 </tr>`
     }
