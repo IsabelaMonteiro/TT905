@@ -7,7 +7,7 @@ const port = process.env.PORT || 80;
 app.use(express.json());
 app.use(cors());
 
-const password = process.env.PASSWORD || "T88NleCcdVnSyPtx";
+const password = process.env.PASSWORD || "no_pass";
 console.log(password)
 const connectionString = `mongodb+srv://bela:${password}@series.h0fx4.mongodb.net/tt905-series?retryWrites=true&w=majority`;
    
